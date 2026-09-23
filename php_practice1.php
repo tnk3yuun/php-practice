@@ -4,7 +4,7 @@
 
 $name = '田中';
 
- echo "私の名前は「 $name 」です";
+ echo '私の名前は「' . $name . '」です';
 
 // Q2 四則演算
 
@@ -16,8 +16,9 @@ echo($num / $x)
 
 // Q3 日付操作
 
-echo date('現在時刻は、Y年m月d日 H時i分s秒です。');
+$now = date('Y年m月d日 H時i分s秒');
 
+echo '現在時刻は、' . $now . 'です。';
 
 // Q4 条件分岐-1 if文
 
@@ -25,12 +26,19 @@ $device = 'windows';
 
 if ($device === 'windows') {
     echo '使用OSは、windowsです。';
+} else {
+    if ($device === 'mac') {
+        echo '使用OSは、macです。';
+    } else {
+        echo 'どちらでもありません。';
     }
+}
 
 // Q5 条件分岐-2 三項演算子
 
 $age = 23;
-$message = ($age > 18) ? '大人！' : '子供！';
+
+$message = ($age < 18) ? '未成年です。' : '成人です。';
 
 echo $message;
 
@@ -38,7 +46,7 @@ echo $message;
 
 $kanto = ['東京','埼玉','栃木県','千葉県','茨城県','群馬県','神奈川県'];
 
-echo $kanto[2] . 'と' . $kanto[3]. 'は関東地方の都道府県です。';
+echo $kanto[2] . 'と' . $kanto[3] . 'は関東地方の都道府県です。';
 
 
 // Q7 連想配列-1
@@ -59,35 +67,37 @@ foreach ($kanto as $prefecture => $capital) {
 // Q8 連想配列-2
 
 $kanto = [
-  '東京都' => '新宿区',
-  '神奈川県' => '横浜市',
-  '千葉県' => '千葉市',
-  '埼玉県' => 'さいたま市',
-  '栃木県' => '宇都宮市',
-  '群馬県' => '前橋市',
-  '茨城県' => '水戸市',
+    '東京都' => '新宿区',
+    '神奈川県' => '横浜市',
+    '千葉県' => '千葉市',
+    '埼玉県' => 'さいたま市',
+    '栃木県' => '宇都宮市',
+    '群馬県' => '前橋市',
+    '茨城県' => '水戸市'
 ];
 
-if (isset($kanto['埼玉県']));
-echo '埼玉県の県庁所在地は、さいたま市です';
+if (isset($kanto['埼玉県'])) {
+    echo '埼玉県の県庁所在地は、' . $kanto['埼玉県'] . 'です。';
+}
 
 // Q9 連想配列-3
-
 $kanto = [
-  '東京都' => '新宿区',
-  '神奈川県' => '横浜市',
-  '千葉県' => '千葉市',
-  '埼玉県' => 'さいたま市',
-  '栃木県' => '宇都宮市',
-  '群馬県' => '前橋市',
-  '茨城県' => '水戸市',
-  '愛知県' => '名古屋市',
-  '大阪府' => '大阪市'
+    '東京都' => '新宿区',
+    '神奈川県' => '横浜市',
+    '千葉県' => '千葉市',
+    '埼玉県' => 'さいたま市',
+    '栃木県' => '宇都宮市',
+    '群馬県' => '前橋市',
+    '茨城県' => '水戸市'
 ];
+
+// 関東以外を追加
+$kanto['愛知県'] = '名古屋市';
+$kanto['大阪府'] = '大阪市';
 
 foreach ($kanto as $prefecture => $capital) {
     if (
-      $prefecture === '東京都' ||
+        $prefecture === '東京都' ||
         $prefecture === '神奈川県' ||
         $prefecture === '千葉県' ||
         $prefecture === '埼玉県' ||
@@ -95,10 +105,11 @@ foreach ($kanto as $prefecture => $capital) {
         $prefecture === '群馬県' ||
         $prefecture === '茨城県'
     ) {
-        echo "{$prefecture}の県庁所在地は、{$capital}です。\n";
+        echo $prefecture . 'の県庁所在地は、' . $capital . 'です。' . "\n";
     } else {
-        echo "{$prefecture}は関東地方ではありません。\n";
+        echo $prefecture . 'は関東地方ではありません。' . "\n";
     }
+
 }
 
 
@@ -126,11 +137,11 @@ echo "{$price}円の商品の税込価格は{$taxInPrice}円です。";
 // Q12 関数とif文
 
 function distinguishNum($num) {
-    if ($num % 2 == 1){
-       return "{$num}は奇数です。";
-   } else {
-       return "{$num}は偶数です。";
-   }
+    if ($num % 2 === 1) {
+        return "{$num}は奇数です。";
+    } else {
+        return "{$num}は偶数です。";
+    }
 }
 
 echo distinguishNum(11);
