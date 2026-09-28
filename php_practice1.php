@@ -24,14 +24,10 @@ echo '現在時刻は、' . $now . 'です。';
 
 $device = 'windows';
 
-if ($device === 'windows') {
-    echo '使用OSは、windowsです。';
+if ($device === 'windows' || $device === 'mac') {
+    echo "使用OSは、{$device}です。";
 } else {
-    if ($device === 'mac') {
-        echo '使用OSは、macです。';
-    } else {
-        echo 'どちらでもありません。';
-    }
+    echo 'どちらでもありません。';
 }
 
 // Q5 条件分岐-2 三項演算子
@@ -81,6 +77,7 @@ if (isset($kanto['埼玉県'])) {
 }
 
 // Q9 連想配列-3
+
 $kanto = [
     '東京都' => '新宿区',
     '神奈川県' => '横浜市',
