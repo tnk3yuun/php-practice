@@ -73,8 +73,13 @@ $kanto = [
 ];
 
 if (isset($kanto['埼玉県'])) {
-    echo '埼玉県の県庁所在地は、' . $kanto['埼玉県'] . 'です。';
+    foreach ($kanto as $prefecture => $capital) {
+        if ($prefecture === '埼玉県') {
+            echo $prefecture . 'の県庁所在地は、' . $capital . "です。\n";
+        }
+    }
 }
+
 
 // Q9 連想配列-3
 
